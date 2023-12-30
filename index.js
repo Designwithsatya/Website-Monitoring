@@ -3,6 +3,7 @@ const axios = require("axios");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 const express = require("express");
+const os = require("os");
 
 dotenv.config();
 
@@ -23,6 +24,21 @@ const transporter = nodemailer.createTransport({
     user: SMTP_USERNAME,
     pass: SMTP_PASSWORD,
   },
+});
+
+//starting point
+app.get("/health", (req, res) => {
+  const healthStatus = {
+    status: "OK",
+    server: {
+      hostname: os.hostname(),
+      uptime: process.uptime(),
+      memoryUsage: process.memoryUsage(),
+    },
+    timestamp: new Date().toISOString(),
+  };
+
+  res.json(healthStatus);
 });
 
 async function checkWebsiteHealth() {
