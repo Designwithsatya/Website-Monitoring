@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.BACKEND_PORT || 5000;
-const WEBSITE_URL = process.env.WEBSITE_URL;
+const WEBSITE_URL = "https://me-dev.titan.in/";
 const SMTP_HOST = process.env.SMTP_HOST;
 const SMTP_PORT = process.env.SMTP_PORT;
 const SMTP_USERNAME = process.env.SMTP_USERNAME;
@@ -58,14 +58,14 @@ async function checkWebsiteHealth() {
     console.error("Error checking website health:", error.message);
   }
 }
-const job = new cron.CronJob("*/10 * * * *", checkWebsiteHealth);
+const job = new cron.CronJob("*/5 * * * *", checkWebsiteHealth);
 
 job.start();
 function createEmailContent(message) {
   const coloredMessage = `<span style="color: red;">${message}</span>`;
   return `
     <p>Dear Team,</p>
-    <p>Our Me@Titan Portal is currently facing technical issues, affecting its normal functionality. This may impact the experience and accessibility for our users.</p>
+    <p>Our Me@Titan Dev Portal is currently facing technical issues, affecting its normal functionality. This may impact the experience and accessibility for our users.</p>
     <p><strong>Portal Name:</strong> Me@Titan</p>
     <p><strong>Status:</strong> Currently Unavailable</p>
     <p><strong>Issue:</strong> ${coloredMessage}</p>
