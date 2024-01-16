@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.BACKEND_PORT || 5000;
-const WEBSITE_URL = "https://me-dev.titan.in/";
+const WEBSITE_URL = "https://me.titan.in/";
 const SMTP_HOST = process.env.SMTP_HOST;
 const SMTP_PORT = process.env.SMTP_PORT;
 const SMTP_USERNAME = process.env.SMTP_USERNAME;
