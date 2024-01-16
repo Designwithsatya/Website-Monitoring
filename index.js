@@ -58,7 +58,7 @@ async function checkWebsiteHealth() {
     console.error("Error checking website health:", error.message);
   }
 }
-const job = new cron.CronJob("*/5 * * * *", checkWebsiteHealth);
+const job = new cron.CronJob("1 * * * *", checkWebsiteHealth);
 
 job.start();
 function createEmailContent(message) {
